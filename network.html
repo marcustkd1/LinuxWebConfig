@@ -1,0 +1,73 @@
+<!doctype html>
+
+<html lang="en">
+  
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+
+<body>
+
+<div align="center"><img src="/projetov1/imagem/config.jpg" width="150px"></div>
+<br><br>
+<center>
+<h3>Configurações de Rede</h3>
+<br>
+		<div>
+		<input type="radio" name="teste" id="1" value="estatico" checked=""> ESTATICO
+		<br>
+		<input type="radio" name="teste" id="2" value="dinamico"> DINAMICO
+		<br>
+		<br>
+		</div>
+		<div height="30px">
+		<input type="text" name="ip" id="ip" placeholder="IP">
+		<br><br>
+		
+		<input type="text" name="mask" id="mask" placeholder="MASK">
+		<br><br>
+		
+		<input type="text" name="gateway" id="gateway" placeholder="GATEWAY">
+		<br><br>
+		
+		<input type="text" name="dns" id="dns" placeholder="DNS">
+		<br><br>
+	
+		<input type="text" name="domin" id="domin" placeholder="DOMINIO">
+		<br><br>
+	
+		<button>Enviar</button>
+		</div>	
+    
+		<div id="result">
+			A operação foi realizada com sucesso!
+		</div>
+	
+
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script>
+
+	$("#result").hide();
+	$("#teste").hide();
+	$("button").click(function(){
+		console.log('foi');
+
+		var url = "processador.php?ip="+$("#ip").val()+"&mask="+$("#mask").val()+"&gateway="+$("#gateway").val()+"&dns="+$("#dns").val()+"&domin="+$("#domin").val()+"&teste="+$("[name=teste]:checked").val();
+	   
+	 
+	    
+		$.getJSON(url, function(result){
+			if (result.status == "sucess"){
+				$("#result").show();
+			}
+		});	
+	
+	});
+	</script>	
+	
+</center>
+
+</body>
+</html>
